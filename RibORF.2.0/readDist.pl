@@ -79,6 +79,11 @@ while (<IN>) {
 close IN;
 $sta{$readLength}[0]=$tot;
 
+# skip a read length if too few or no reads
+if($tot < 100){
+    next;
+}
+
 my %count5;
 my %count3;
 open (AN, "$geneFile");
